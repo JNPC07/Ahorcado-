@@ -33,7 +33,7 @@ El programa incluye:
 - 🚫 Validación de números y símbolos: Si se detecta cualquier caracter especial escrita por el usuario se negará su validez y se volverá a pedir que ingrese de nuevo su opción sin este error.  
 <img src="imagenes/caracterEspecial.png" width="600">
 - 💀 Muerte instantánea si se falla la palabra completa.
-<img src="imagenes/muerteInsantanea.png.png" width="600">
+<img src="imagenes/muerteInsantanea.png" width="600">
 - 🐢 Dibujo progresivo con CTurtle.
 <img src="imagenes/CTurtle.png" width="600">
 - 🏆 Sistema de puntajes.
