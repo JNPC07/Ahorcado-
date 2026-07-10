@@ -87,8 +87,6 @@ flowchart TD
 
 ## Estructura del código
 
-## Estructura del código
-
 ```mermaid
 flowchart TD
     A[Juego del Ahorcado]
