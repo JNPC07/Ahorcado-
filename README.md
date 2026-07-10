@@ -33,7 +33,7 @@ El programa incluye:
 - 🚫 Validación de números y símbolos: Si se detecta cualquier caracter especial escrita por el usuario se negará su validez y se volverá a pedir que ingrese de nuevo su opción sin este error.  
 <img src="imagenes/caracterEspecial.png" width="600">
 - 💀 Muerte instantánea si se falla la palabra completa.
-<img src="imagenes/muerteInstantanea.png" width="600">
+<img src="imagenes/muerteInsantanea.png.png" width="600">
 - 🐢 Dibujo progresivo con CTurtle.
 <img src="imagenes/CTurtle.png" width="600">
 - 🏆 Sistema de puntajes.
@@ -87,33 +87,38 @@ flowchart TD
 
 ## Estructura del código
 
+## Estructura del código
+
 ```mermaid
-flowchart TB
-    A[Juego del Ahorcado] --> B[Menu]
+flowchart TD
+    A[Juego del Ahorcado]
+
+    A --> B[Menu]
+    A --> C[Validaciones]
+    A --> D[Logica del juego]
+    A --> E[Usuarios]
+    A --> F[Puntajes]
+    A --> G[Archivos]
+
     B --> B1[menu]
-    B1 --> B2[ValidacionOpcionMenu]
+    B --> B2[ValidacionOpcionMenu]
 
-    B2 --> C[Validaciones]
     C --> C1[Mayusculas]
-    C1 --> C2[ValidacionEsPalabra]
-    C2 --> C3[ValidacionAlfa]
+    C --> C2[ValidacionEsPalabra]
+    C --> C3[ValidacionAlfa]
 
-    C3 --> D[Logica del juego]
     D --> D1[VerificarAcertado]
-    D1 --> D2[dibujarAhorcado]
+    D --> D2[dibujarAhorcado]
 
-    D2 --> E[Usuarios]
     E --> E1[agregarUsuario]
-    E1 --> E2[iniciarSesion]
-    E2 --> E3[existeUsuario]
-    E3 --> E4[existeContrasena]
+    E --> E2[iniciarSesion]
+    E --> E3[existeUsuario]
+    E --> E4[existeContrasena]
 
-    E4 --> F[Puntajes]
     F --> F1[PuntajeCalc]
-    F1 --> F2[OrdenamientoScores]
-    F2 --> F3[ImpTop]
+    F --> F2[OrdenamientoScores]
+    F --> F3[ImpTop]
 
-    F3 --> G[Archivos]
     G --> G1[listaJugadores.csv]
-    G1 --> G2[palabrasAdivinar.txt]
+    G --> G2[palabrasAdivinar.txt]
 ```
