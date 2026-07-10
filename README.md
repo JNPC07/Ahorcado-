@@ -13,45 +13,47 @@ El programa incluye:
 2. Modo de dos jugadores.
 3. Sistema de usuarios.
 4. Sistema de puntajes.
-5.  Top scores.
+5. Top scores.
 6. Validación de entradas.
 7. Dibujo progresivo del ahorcado con CTurtle.
 8. Lectura de palabras desde archivo externo.
 
 ## Funcionalidad
 
-- 🎯 Selección de modo de juego:  Se da la opción de elegir al usuario el nivel de dificultad al que se quiere enfrenatar. Dependiendo de su elección se abrirá el txt palabras_facil, palabras_medio o palabras_dificil.
-<img src="imagenes/dificuldad.png" width="600">
+- 🎯 Selección de modo de juego:  Se da la opción de elegir al usuario el nivel de dificultad al que se quiere enfrenatar. Dependiendo de su elección se abrirá el txt palabras_facil, palabras_medio o palabras_dificil.  
+<img src="imagenes/dificultad.png" width="600">
 - 👤 Registro e inicio de sesión de usuarios: Se implememtó el registro e inicio de sesión con la finalidad de mantener un historial de los puntajes de nuestros usuarios e ir publicando a nuestros mejores jugadores.
-
+<img src="imagenes/inicioSesion.png" width="600">
 - 🔐Validación de usuario y contraseña: Se busca dentro de nuestro cvs "listaJugadores" la existencia de ese usuario y contraseña. Si no existe se da la opción de Registro.
 <img src="imagenes/existejugador.png" width="600">
 - 🎲 Selección aleatoria de palabras: El txt elegido será escaneado por un random para elegir de manera aleatoria una sola palabra.
-  
-- 🔠 Conversión automática a mayúsculas: Todas las desiciones que tome el usuario y sean escritas en la terminal serán pasadas por un subprograma para convertirlas a mayúsculas.
-
-- 🚫 Validación de números y símbolos: Si se detecta cualquier caracter especial escrita por el usuario se negará su validez y se volverá a pedir que ingrese de nuevo su opción sin este error.
-  
+<img src="imagenes/palabraAleatoria.png" width="600">
+- 🔠 Conversión automática a mayúsculas: Todas las desiciones que tome el usuario y sean escritas en la terminal serán pasadas por un subprograma para convertirlas a mayúsculas.  
+<img src="imagenes/mayusculas.png" width="600">
+- 🚫 Validación de números y símbolos: Si se detecta cualquier caracter especial escrita por el usuario se negará su validez y se volverá a pedir que ingrese de nuevo su opción sin este error.  
+<img src="imagenes/caracterEspecial.png" width="600">
 - 💀 Muerte instantánea si se falla la palabra completa.
-
+<img src="imagenes/muerteInstantanea.png" width="600">
 - 🐢 Dibujo progresivo con CTurtle.
-
+<img src="imagenes/CTurtle.png" width="600">
 - 🏆 Sistema de puntajes.
-  
+<img src="imagenes/puntaje.png" width="600">  
 - 📊 Tabla de mejores puntuaciones.
+<img src="imagenes/comparacionPuntaje.png" width="600">
 
 ## Diagrama de uso
+
 ```mermaid
 flowchart TD
     A[Inicio del programa] --> B[Cargar jugadores desde CSV]
-    B --> C[Iniciar sesión o registrar usuario]
-    C --> D[Mostrar menú principal]
-    D --> E{Seleccionar opción}
+    B --> C[Iniciar sesion o registrar usuario]
+    C --> D[Mostrar menu principal]
+    D --> E{Seleccionar opcion}
 
     E -->|1| F[Modo un jugador]
     E -->|2| G[Modo dos jugadores]
-    E -->|3| H[Ver Top Scores]
-    E -->|4| I[Créditos]
+    E -->|3| H[Top Scores]
+    E -->|4| I[Creditos]
 
     F --> J[Seleccionar palabra aleatoria]
     G --> K[Ingresar palabra manualmente]
@@ -60,21 +62,21 @@ flowchart TD
     K --> L
 
     L --> M[Ingresar letra o palabra]
-    M --> N{Entrada válida?}
+    M --> N{Entrada valida}
 
     N -->|No| M
-    N -->|Sí| O{Acierta?}
+    N -->|Si| O{Acierta}
 
-    O -->|Sí| P[Actualizar palabra adivinada]
+    O -->|Si| P[Actualizar palabra adivinada]
     O -->|No| Q[Restar intento y dibujar ahorcado]
 
-    P --> R{Ganó?}
-    Q --> S{Sin intentos?}
+    P --> R{Gano}
+    Q --> S{Sin intentos}
 
-    R -->|Sí| T[Sumar puntaje]
+    R -->|Si| T[Sumar puntaje]
     R -->|No| M
 
-    S -->|Sí| U[Game Over]
+    S -->|Si| U[Game Over]
     S -->|No| M
 
     T --> V[Guardar puntaje]
@@ -83,5 +85,35 @@ flowchart TD
     W --> D
 ```
 
-## Posibles mejoras
- 
+## Estructura del código
+
+```mermaid
+flowchart TB
+    A[Juego del Ahorcado] --> B[Menu]
+    B --> B1[menu]
+    B1 --> B2[ValidacionOpcionMenu]
+
+    B2 --> C[Validaciones]
+    C --> C1[Mayusculas]
+    C1 --> C2[ValidacionEsPalabra]
+    C2 --> C3[ValidacionAlfa]
+
+    C3 --> D[Logica del juego]
+    D --> D1[VerificarAcertado]
+    D1 --> D2[dibujarAhorcado]
+
+    D2 --> E[Usuarios]
+    E --> E1[agregarUsuario]
+    E1 --> E2[iniciarSesion]
+    E2 --> E3[existeUsuario]
+    E3 --> E4[existeContrasena]
+
+    E4 --> F[Puntajes]
+    F --> F1[PuntajeCalc]
+    F1 --> F2[OrdenamientoScores]
+    F2 --> F3[ImpTop]
+
+    F3 --> G[Archivos]
+    G --> G1[listaJugadores.csv]
+    G1 --> G2[palabrasAdivinar.txt]
+```
